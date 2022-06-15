@@ -7,11 +7,11 @@ Parameters:
     Default: 180
   InputS3BucketName:
     Type: String
-    Default: 's3-lambda-ffmpeg-input-mov-bucket'
+    Default: 'ffmpeg-lambda-convert-input'
     MinLength: 3
   OutputS3BucketName:
     Type: String
-    Default: 's3-lambda-ffmpeg-output-mp4-bucket'
+    Default: 'ffmpeg-lambda-convert-output'
     MinLength: 3
 Resources:
   InputS3Bucket:
@@ -27,7 +27,7 @@ Resources:
       Runtime: nodejs8.10
       CodeUri: src/
       Layers:
-        - 'arn:aws:lambda:us-east-1:145266761615:layer:ffmpeg:4'
+        - 'arn:aws:lambda:us-west-2:255827576516:layer:ffmpeg:1'
       Policies:
       - S3CrudPolicy:
           BucketName: !Ref OutputS3BucketName
